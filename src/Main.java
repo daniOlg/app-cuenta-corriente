@@ -1,6 +1,6 @@
+import cuentas.AdministradorCuentas;
 import cuentas.CuentaCorriente;
 
-import java.util.HashSet;
 import java.util.Scanner;
 
 public class Main {
@@ -67,13 +67,13 @@ public class Main {
             if(seleccionMenu == LISTAR_CUENTAS) {
                 System.out.println("--------------------------------------------------------");
                 System.out.println("Cuentas existentes:");
-                for(CuentaCorriente cuenta : CuentaCorriente.cuentas) {
-                    System.out.println("- " + cuenta.datosBasicos());
+                for(CuentaCorriente cuenta : AdministradorCuentas.cuentas) {
+                    System.out.println("- " + cuenta.datosBasicosToString());
                 }
             } else if(seleccionMenu == VER_DETALLE) {
                 System.out.print("Ingrese el numero de la cuenta: ");
                 int numero = scanner.nextInt();
-                for(CuentaCorriente cuenta : CuentaCorriente.cuentas) {
+                for(CuentaCorriente cuenta : AdministradorCuentas.cuentas) {
                     if(cuenta.getNumero() == numero) {
                         System.out.println(cuenta);
                     }
@@ -89,7 +89,7 @@ public class Main {
                 System.out.print("Ingrese el numero de la cuenta: ");
                 int numero = scanner.nextInt();
                 CuentaCorriente seleccionada = null;
-                for(CuentaCorriente cuenta : CuentaCorriente.cuentas) {
+                for(CuentaCorriente cuenta : AdministradorCuentas.cuentas) {
                     if(cuenta.getNumero() == numero) {
                         seleccionada = cuenta;
                     }
@@ -108,7 +108,7 @@ public class Main {
                 System.out.print("Ingrese el numero de la cuenta: ");
                 int numero = scanner.nextInt();
                 CuentaCorriente seleccionada = null;
-                for(CuentaCorriente cuenta : CuentaCorriente.cuentas) {
+                for(CuentaCorriente cuenta : AdministradorCuentas.cuentas) {
                     if(cuenta.getNumero() == numero) {
                         seleccionada = cuenta;
                     }

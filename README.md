@@ -1,4 +1,4 @@
-# Requerimientos
+# Requerimientos 1
 1. En un proyecto llamado `AppCuentaCorriente`, crea el package `cuentas` con una clase llamada `CuentaCorriente`
 que tendrá los siguientes atributos: `titular (String)`, `saldo (numérico con decimales)` y `número (numérico)`.
 
@@ -14,11 +14,24 @@ que tendrá los siguientes atributos: `titular (String)`, `saldo (numérico con 
 
 <sub>Clase extra agregada `verSaldo()` imprime el saldo en pantalla</sub>
 
+# Requerimientos 2
+1. Base su solución en lo escrito en la versión anterior. Implemente las mejoras que considere necesarias fruto de lo aprendido durante esta unidad.
+
+2. Valide que los datos enviados por parámetros- en especial los envaidos a métodos set - corresponden a los tipos de datos solicitados, por medio de la implementación de clausulas try-catch.
+
+3. Cree la Clase “Movimientos”, que contiene atributos de tipo de movimiento – abono o cargo-, fecha y monto, entro del package cuentas.
+
+4. Cree un nuevo atributo en la clase CuentaCorriente, un array de tipo Movimientos, y que contenga los últimos 10 movimientos.
+
+5. Modifque los métdos abonar y cargar, para que guarden un registro de los últimos movimientos en el array de Movimientos.
+
+6. En el metodo Main de la clase principal de proyecto, instancie las clases y consuma los métodos para probar las diversas casuisticas.
+
 ### UML Proyecto:
 
-**Simbolo** | `-` | `+` | `$`
-:-:|:-:|:-:|:-:
-**Definición** | privado | publico | estatico
+|  **Simbolo**   |   `-`   |   `+`   |   `$`    |
+|:--------------:|:-------:|:-------:|:--------:|
+| **Definición** | privado | publico | estatico |
 
 ```mermaid
 classDiagram

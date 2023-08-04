@@ -2,13 +2,8 @@ package cuentas;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Random;
 
 public class CuentaCorriente {
-    public static ArrayList<CuentaCorriente> cuentas = new ArrayList<>();
-    public static HashSet<Integer> identificadoresOcupados = new HashSet<>();
-
     private String titular;
     private ArrayList<Movimiento> movimientos = new ArrayList<>(10);
     private int numero;
@@ -18,25 +13,28 @@ public class CuentaCorriente {
     // imprimir una cuenta
     @Override
     public String toString() {
-        String movimientosString = "\n";
+        String movimientosStr = "\n";
 
-        // si es un movimiento (último movimiento) o si son mas (últimos x movimientos)
-        if (movimientos.size() == 0) {
-            movimientosString += "Aun no hay movimientos";
-        } else if (movimientos.size() == 1)
-            movimientosString += "Ultimo movimiento:";
+        // dependiendo de la cantidad de movimientos asigna un string
+        if (movimientos.size() == 0)
+            movimientosStr += "Aun no hay movimientos";
+        else if (movimientos.size() == 1)
+            movimientosStr += "Ultimo movimiento:";
         else
-            movimientosString += "Ultimos " + movimientos.size() + " movimientos:";
+            movimientosStr += "Ultimos " + movimientos.size() + " movimientos:";
 
         // añadir los movimientos al string final
         for(Movimiento movimiento : movimientos)
-            movimientosString +=  "\n" + movimiento.toString();
+            movimientosStr +=  "\n" + movimiento.toString();
 
-        String separador = "--------------------------------------------------------";
-        return separador + "\nTitular: " + this.titular + "\nNúmero: " + this.numero + "\nSaldo: $" + this.saldo + movimientosString;
+        return "--------------------------------------------------------"
+                + "\nTitular: " + this.titular
+                + "\nNúmero: " + this.numero
+                + "\nSaldo: $" + this.saldo
+                + movimientosStr;
     }
 
-    public String datosBasicos() {
+    public String datosBasicosToString() {
         return "Titular: " + this.titular + ", Número: " + this.numero;
     }
 
@@ -64,7 +62,7 @@ public class CuentaCorriente {
 
     // añadir movimiento a lista de movimientos
     public void addMovimiento(TipoMovimiento tipo, float cantidad) {
-        // comprueba si existen 10 movimientos, si existen elimina el primero añadido
+        // si ya existen 10 movimientos elimina el primero para dejar paso a agregar otro
         if(movimientos.size() >= 10) {
             movimientos.remove(0);
         }
@@ -72,7 +70,7 @@ public class CuentaCorriente {
         this.movimientos.add(new Movimiento(tipo, new Date(), cantidad));
     }
 
-    // constructores (se borró el otro y se reemplazó por un generador de número aleatorio y saldo en cero)
+    // constructores (se borró el otro, pone saldo en cero, asigna un numero aleatorio que no este usado ya)
     public CuentaCorriente(String titular) {
         this.titular = titular;
 
@@ -80,41 +78,20 @@ public class CuentaCorriente {
         this.saldo = 0;
 
         // genera un id random y lo asigna a numero
-        this.numero = generarIdRandom();
+        this.numero = Utils.generarIdRandom();
 
-        // añade el id de esta cuenta corriente a los id ocupados
-        CuentaCorriente.identificadoresOcupados.add(this.numero);
+        // añade el id a los que ya se han ocupado
+        AdministradorCuentas.identificadoresOcupados.add(this.numero);
 
         // añadir la cuenta al listado de cuentas
-        cuentas.add(this);
+        AdministradorCuentas.cuentas.add(this);
     }
 
-    // generar nuevo id, comprobando antes que no exista
-    public int generarIdRandom() {
-        int id;
-
-        Random random = new Random();
-
-        // genera un nuevo numero si este ya existe en los id ocupados
-        do {
-            id = random.nextInt(0, 1000000);
-        } while(CuentaCorriente.identificadoresOcupados.contains(id));
-
-        return id;
-    }
-
-    // getters & setters
-    public String getTitular() {
-        return titular;
-    }
+    // getters & setters (solo se crean los necesarios)
     public int getNumero() {
         return numero;
     }
     public float getSaldo() {
         return saldo;
-    }
-
-    public void setTitular(String titular) {
-        this.titular = titular;
     }
 }

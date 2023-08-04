@@ -5,6 +5,7 @@ import static cuentas.AdministradorCuentas.programaUsuario;
 
 public class Main {
     public static void main(String[] args) {
+        // Generar datos de prueba
         CuentaCorriente cuentaCorrienteDanielIgnacio = new CuentaCorriente("Daniel Ignacio");
 
         // Probar mas de 10 movimientos

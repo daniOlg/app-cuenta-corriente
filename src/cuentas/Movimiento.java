@@ -15,6 +15,13 @@ public class Movimiento {
 
     @Override
     public String toString() {
-        return (tipo == TipoMovimiento.ABONO ? "[+] " : "[-] ") + tipo + " -> Monto: $" + monto + ", Fecha: " + fecha.toString();
+        String tipoStr = "";
+
+        if(tipo == TipoMovimiento.ABONO)
+            tipoStr += "[+] ";
+        else
+            tipoStr += "[-] ";
+
+        return tipoStr + tipo + " -> Monto: $" + monto + ", Fecha: " + fecha;
     }
 }

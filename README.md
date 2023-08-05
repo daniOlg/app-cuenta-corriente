@@ -27,6 +27,11 @@ que tendrá los siguientes atributos: `titular (String)`, `saldo (numérico con 
 
 6. En el `metodo Main` de la clase principal de proyecto, instancie las clases y consuma los métodos para probar las diversas casuisticas.
 
+#### Vista previa proyecto:
+![preview](preview/preview-1.png?raw=true "preview")
+
+
+<sub>TODO: Actualizar UML Proyecto</sub>
 ### UML Proyecto:
 
 |  **Simbolo**   |   `-`   |   `+`   |   `$`    |

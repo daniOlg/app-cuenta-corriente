@@ -1,5 +1,7 @@
 package cuentas;
 
+import admin.AdministradorCuentas;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -70,28 +72,32 @@ public class CuentaCorriente {
         this.movimientos.add(new Movimiento(tipo, new Date(), cantidad));
     }
 
-    // constructores (se borró el otro, pone saldo en cero, asigna un numero aleatorio que no este usado ya)
+    // constructores (pone saldo en cero, asigna un número aleatorio que no esté usado ya)
     public CuentaCorriente(String titular) {
         this.titular = titular;
 
         // cuando se abre una cuenta corriente el saldo inicia en cero
         this.saldo = 0;
 
-        // genera un id random y lo asigna a numero
-        this.numero = Utils.generarIdRandom();
-
-        // añade el id a los que ya se han ocupado
-        AdministradorCuentas.identificadoresOcupados.add(this.numero);
-
-        // añadir la cuenta al listado de cuentas
-        AdministradorCuentas.cuentas.add(this);
+        AdministradorCuentas.agregarCuenta(this);
     }
 
     // getters & setters (solo se crean los necesarios)
     public int getNumero() {
         return numero;
     }
+
     public float getSaldo() {
         return saldo;
+    }
+
+    public String getTitular() {
+        return titular;
+    }
+
+    // no se usa el try/catch, el parámetro que recibe si o si es un int
+    // si no daria un compile error y no un runtime error
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 }

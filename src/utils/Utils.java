@@ -1,4 +1,6 @@
-package cuentas;
+package utils;
+
+import admin.AdministradorCuentas;
 
 import java.util.Random;
 
@@ -9,7 +11,7 @@ public class Utils {
 
         Random random = new Random();
 
-        // genera un nuevo numero si este ya existe en los id ocupados
+        // genera un nuevo número si este ya existe en los ID ocupados
         do {
             id = random.nextInt(0, 1000000);
         } while(AdministradorCuentas.identificadoresOcupados.contains(id));
